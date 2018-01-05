@@ -1,8 +1,9 @@
 class CreateCards < ActiveRecord::Migration[5.1]
   def change
-    change_table :cards do |t|
-      t.remove :review_date
-t.date :review_date
+    create_table :cards do |t|
+ t.string :original_text
+ t.string :translated_text
+ t.date :review_date
     end
   end
 end

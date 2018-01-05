@@ -5,8 +5,10 @@ class Card < ApplicationRecord
     self.original_text=original_text.capitalize
     self.translated_text=translated_text.capitalize
   end
-  before_create do
+
+  before_create :set_review_date
+    def set_review_date
     @review=Date.today
     self.review_date=@review.next_day(3)
   end
-end
+  end
