@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
   root 'static_pages#index'
-  resource :cards
+  get 'cards/index', to:'cards#index'
+  resources :cards
 end

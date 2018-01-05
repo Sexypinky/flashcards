@@ -8,7 +8,6 @@ class Card < ApplicationRecord
 
   before_create :set_review_date
     def set_review_date
-    @review=Date.today
-    self.review_date=@review.next_day(3)
-  end
+    self.review_date=3.days_from_now
+    end
   end
