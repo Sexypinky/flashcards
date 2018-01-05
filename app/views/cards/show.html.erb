@@ -1,0 +1,6 @@
+<% @card.each do |card|%>
+  <h3> <span class="select"><h3>Текст</h3> <%= card.original_text%></span></h3>
+  <h2> <span class="select"><h3>Переведенный текст</h3> <%=card.translated_text%></span></h2>
+  <h2> <span class="select"><h3>Просмотр</h3> <%=card.review_date%></span></h2>
+  -------------------------------------------------------------------------------
+<%end%>
