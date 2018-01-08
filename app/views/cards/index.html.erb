@@ -3,7 +3,6 @@
   <h2> <span class="select"><h3>Переведенный текст</h3> <%=card.translated_text%></span></h2>
   <h2> <span class="select"><h3>Дата перепросмотра</h3> <%=card.review_date.strftime(("%d/%m/%Y"))%></span></h2>
   <%= link_to 'Удалить',card_path(card), method: :delete, data:{confirm:'Вы уверены?'}%>
-  |
   <%= link_to 'Редактировать',edit_card_path(card)%>
   <br>
   -------------------------------------------------------------------------------
