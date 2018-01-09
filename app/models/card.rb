@@ -6,6 +6,8 @@ class Card < ApplicationRecord
     self.translated_text=translated_text.capitalize
   end
 
+  scope :check_date, -> {where('review_date <= ?', Date.today)}
+
   before_create :set_review_date
 
     def set_review_date

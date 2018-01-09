@@ -29,6 +29,7 @@ class CardsController < ApplicationController
       render :edit
     end
   end
+
   def destroy
     @card=Card.find(params[:id])
     if @card.present?
@@ -39,6 +40,18 @@ class CardsController < ApplicationController
       redirect_to cards_index_path
     end
   end
+
+  def cardcheck
+    @cardcheck=Card.new(card_params)
+    @card=Card.find_by(original_text: @cardcheck.translated_text)
+    if not @card.blank?
+      @card.update(:review_date => 3.days.from_now)
+      redirect_to root_path, notice:'Слово верно переведено'
+    else
+      redirect_to root_path, notice:'Слово переведено неверно'
+    end
+  end
+
   def card_params
     params[:card].permit(:original_text, :translated_text, :review_date)
   end
