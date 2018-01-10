@@ -15,16 +15,24 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#">Флэшкарточкер</a>
+    <div class="navbar-brand">
+    <%= link_to 'Флэшкарточкер',root_path%>
+    </div>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" href="#">Создать карточку</a>
-        <a class="nav-item nav-link" href="#">Все карточки</a>
+        <div class="nav-item nav-link">
+          <%= link_to 'Создать карточку',new_card_path%>
+        </div>
+        <div class="nav-item nav-link">
+          <%= link_to 'Все карточки',cards_index_path%>
+        </div>
       </div>
     </div>
   </nav>
-
+  <div class="col-lg-9">
+  <%= render partial: "shared/flash_messages", flash: flash %>
   <%=yield%>
+  </div>
   </body>
   </html>
 
