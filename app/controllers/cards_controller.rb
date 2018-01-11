@@ -10,9 +10,9 @@ class CardsController < ApplicationController
   def create
     @card=Card.new(card_params)
     if @card.save
-      redirect_to cards_index_path, notice: 'Страница успешно создана'
+      redirect_to cards_index_path, notice: 'Карточка успешно создана'
     else
-      flash.now[:danger]='Ошибка создания страницы'
+      flash.now[:danger]='Ошибка создания карточки'
       render :new
     end
   end
@@ -36,7 +36,7 @@ class CardsController < ApplicationController
       @card.destroy
       redirect_to cards_index_path
     else
-      flash.now[:danger]='Ошибка удаления страницы'
+      flash.now[:danger]='Ошибка удаления карточки'
       redirect_to cards_index_path
     end
   end

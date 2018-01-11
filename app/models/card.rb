@@ -1,6 +1,8 @@
 class Card < ApplicationRecord
   validates :original_text, :translated_text, presence: true
   validates :original_text, exclusion: { in: :translated_text}
+  validates :original_text, :translated_text, :format => { :without =>/[0-9]/,
+                             :message => "Только буквы!" }
   before_validation do
     self.original_text=original_text.capitalize
     self.translated_text=translated_text.capitalize

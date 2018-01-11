@@ -1,8 +1,8 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :card do
-    original_text "apple"
-    translated_text "яблоко"
+    original_text "father"
+    translated_text "futher"
 
   end
 
