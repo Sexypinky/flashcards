@@ -42,9 +42,8 @@ class CardsController < ApplicationController
   end
 
   def cardcheck
-    @cardcheck=Card.new(card_params)
-    @card=Card.find_by(original_text: @cardcheck.translated_text)
-    if not @card.blank?
+    @card=Card.find(params[:id])
+    if @card.original_text == params[:check_text]
       @card.update(:review_date => 3.days.from_now)
       redirect_to root_path, notice:'Слово переведено верно'
     else
