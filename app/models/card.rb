@@ -10,6 +10,14 @@ class Card < ApplicationRecord
 
   scope :check_date, -> {where('review_date <= ?', Date.today)}
 
+  def update_review_date
+  self.update(:review_date => 3.days.from_now)
+  end
+
+  def right_translation?(params)
+    self.original_text==(params)
+  end
+
   before_create :set_review_date
 
     def set_review_date

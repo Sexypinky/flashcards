@@ -1,8 +1,8 @@
 FactoryBot.define do
 
   factory :card do
-    original_text "father"
-    translated_text "futher"
+    original_text "apple"
+    translated_text "яблоко"
 
   end
 

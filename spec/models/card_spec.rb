@@ -51,11 +51,18 @@ describe Card do
     @card=card.review_date
     if @card.blank?
     expect(card).to_not be_valid
+    else
+      expect(card).to be_valid
     end
     end
 
-  it "is true if check_date work" do
-    card.review_date=Date.today
-    expect(card.check_date).to be_true
+  it "is true if right_translation? right" do
+    check = card.right_translation?('Apple')
+    expect(check).to be_truthy
+  end
+
+  it "is true if right_translation? not right" do
+    check=card.right_translation?('lol')
+    expect(check).to_not be_truthy
   end
 end
