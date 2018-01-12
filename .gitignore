@@ -4,10 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-
+/.idea
 config/database.yml
 # Ignore bundler config.
-/.idea
 /.bundle
 
 # Ignore the default SQLite database.

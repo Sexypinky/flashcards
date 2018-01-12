@@ -10,9 +10,9 @@ class CardsController < ApplicationController
   def create
     @card=Card.new(card_params)
     if @card.save
-      redirect_to cards_index_path, notice: 'Страница успешно создана'
+      redirect_to cards_index_path, notice: 'Карточка успешно создана'
     else
-      flash.now[:danger]='Ошибка создания страницы'
+      flash.now[:danger]='Ошибка создания карточки'
       render :new
     end
   end
@@ -36,17 +36,16 @@ class CardsController < ApplicationController
       @card.destroy
       redirect_to cards_index_path
     else
-      flash.now[:danger]='Ошибка удаления страницы'
+      flash.now[:danger]='Ошибка удаления карточки'
       redirect_to cards_index_path
     end
   end
 
   def cardcheck
-    @cardcheck=Card.new(card_params)
-    @card=Card.find_by(original_text: @cardcheck.translated_text)
-    if not @card.blank?
-      @card.update(:review_date => 3.days.from_now)
-      redirect_to root_path, notice:'Слово верно переведено'
+    @card=Card.find(params[:id])
+    if @card.right_translation?(params[:check_text])
+      @card.update_review_date
+      redirect_to root_path, notice:'Слово переведено верно'
     else
       redirect_to root_path, notice:'Слово переведено неверно'
     end

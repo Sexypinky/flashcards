@@ -1,13 +1,14 @@
 <h2>Карточка</h2>
-  <%= simple_form_for (@cardcheck), url: cards_cardcheck_path, :method => :post do |f| %>
+  <%= form_tag  url: cards_cardcheck_path, method: :post do  %>
     <h5>Текст</h5>
     <%= @card.translated_text%>
     <h5>Переведенный текст</h5>
     <div class= "form_group">
-      <%= f.text_field :translated_text%>
+      <%= text_field_tag :check_text%>
     </div>
+     <%= hidden_field_tag "id", @card.id%>
     <div class= "form_group">
-      <%= f.button :submit, 'Проверить', class: 'btn btn-primary' %>
+      <%= submit_tag 'Проверить', class: 'btn btn-primary' %>
       <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
     </div>
 <%end%>
