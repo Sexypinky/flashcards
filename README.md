@@ -23,3 +23,4 @@ Things you may want to cover:
 
 * ...
 # flashcards
+[![Build Status](https://travis-ci.org/Sexypinky/flashcards.svg?branch=master.png)](https://travis-ci.org/Sexypinky/flashcards.svg?branch=master)
