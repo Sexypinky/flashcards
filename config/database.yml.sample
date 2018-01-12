@@ -16,7 +16,4 @@ production:
   <<: *default
   database: mydb2
 
-language: ruby
-rvm:
- - 2.2
 
