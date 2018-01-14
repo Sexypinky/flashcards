@@ -5,5 +5,5 @@ rvm:
 before_script:
 - cp config/database.yml.sample config/database.yml
 
-script: "exec rspec spec"
+script: "bundle exec rspec spec"
 
