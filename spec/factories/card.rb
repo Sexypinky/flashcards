@@ -6,8 +6,8 @@ FactoryBot.define do
   end
 
   factory :user do
-    original_text "Anton"
-    translated_text "qwerty1234"
+    email "Anton"
+    password "qwerty1234"
 
   end
 

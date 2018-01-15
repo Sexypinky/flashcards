@@ -25,10 +25,4 @@ class Card < ApplicationRecord
     self.review_date=3.days.from_now
     end
 
-  before_create :set_user_id
-
-  def set_user_id
-    self.user_id=curent_user.id
-  end
-
   end
