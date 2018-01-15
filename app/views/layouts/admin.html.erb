@@ -15,16 +15,17 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-inverse bg-inverse">
   <div class="container">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="/">Flashcards</a>
+    <a class="navbar-brand" href="/">Flashcards's admin</a>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
+        <li><%= link_to "Все карточки", "/cards"  %></li>
         <li><%= link_to "Создать карточку", "/cards/new"  %></li>
         <li><%= link_to "Мои карточки", "/cards/mycards"  %></li>
       </ul>
@@ -38,7 +39,7 @@
       </ul>
     </div>
   </div>
-</div>
+</nav>
 
 <div class="container">
   <div class="row">
@@ -55,10 +56,9 @@
           <li><%= link_to "Link2", "/path2"  %></li>
           <li><%= link_to "Link3", "/path3"  %></li>
         </ul>
-      </div><!--/.well -->
-    </div><!--/span-->
-  </div><!--/row-->
-
+      </div>
+    </div>
+  </div>
   <footer>
     <p>&copy; Flashcards 2018</p>
   </footer>
@@ -67,5 +67,3 @@
 
 </body>
 </html>
-
-

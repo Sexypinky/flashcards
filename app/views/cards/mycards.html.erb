@@ -1,0 +1,22 @@
+<h1>Мои карточки</h1>
+  <% @cards.each do |card|%>
+    <table class="table table-sm">
+      <thead>
+      <tr>
+        <th scope="col">Текст</th>
+        <th scope="col">Переведенный текст</th>
+        <th scope="col">Дата перепросмотра</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      <td><%=card.original_text%></td>
+      <td><%=card.translated_text%></td>
+      <td><%=card.review_date.strftime(("%d/%m/%Y"))%></td>
+      </tr>
+      </tbody>
+    </table>
+  <%= link_to 'Удалить карточку',cards_delete_path(card),  class: 'btn btn-primary' %>
+  <br>
+  <br>
+<%end%>

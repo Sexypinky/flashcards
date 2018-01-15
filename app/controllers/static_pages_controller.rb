@@ -1,8 +1,10 @@
 class StaticPagesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @card=Card.check_date.first
+    @card=current_user.cards.check_date.first
     if @card.blank?
-      redirect_to cards_index_path, notice:'Нет доступных карточек для просмотра'
+      redirect_to cards_path, notice:'Нет доступных карточек для просмотра'
     end
     end
 end
