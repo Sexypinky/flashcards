@@ -26,4 +26,10 @@ describe Card do
     check=card.right_translation?('lol')
     expect(check).to_not be_truthy
   end
+
+  it "is eq if set_user_id is work" do
+    card.set_user_id
+    expect(card.user_id).to eq(current_user.id)
+  end
+
 end

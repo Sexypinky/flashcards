@@ -1,5 +1,6 @@
 class Card < ApplicationRecord
-  validates :original_text, :translated_text, presence: true
+  belongs_to :user
+  validates :original_text, :translated_text,  presence: true
   validates :original_text, exclusion: { in: :translated_text}
   validates :original_text, :translated_text, :format => { :without =>/[0-9]/,
                              :message => "Только буквы!" }
@@ -23,4 +24,11 @@ class Card < ApplicationRecord
     def set_review_date
     self.review_date=3.days.from_now
     end
+
+  before_create :set_user_id
+
+  def set_user_id
+    self.user_id=curent_user.id
+  end
+
   end
