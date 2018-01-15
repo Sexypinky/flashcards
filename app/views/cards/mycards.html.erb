@@ -16,7 +16,7 @@
       </tr>
       </tbody>
     </table>
-  <%= link_to 'Удалить карточку',cards_delete_path(card),  class: 'btn btn-primary' %>
+  <%= link_to 'Удалить карточку',card_path(card), method: :delete, class: 'btn btn-primary' %>
   <br>
   <br>
 <%end%>

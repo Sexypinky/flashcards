@@ -1,9 +1,5 @@
 class CardsController < ApplicationController
 
-  def index
-    @card=Card.all
-  end
-
   def new
     @card=Card.new
   end
@@ -11,7 +7,7 @@ class CardsController < ApplicationController
   def create
     @card=current_user.cards.new(card_params)
     if @card.save
-      redirect_to cards_path, notice: 'Карточка успешно создана'
+      redirect_to cards_mycards_path, notice: 'Карточка успешно создана'
     else
       flash.now[:danger]='Ошибка создания карточки'
       render :new
@@ -25,14 +21,14 @@ class CardsController < ApplicationController
   def update
     @card=Card.find(params[:id])
     if @card.update(card_params)
-      redirect_to cards_path
+      redirect_to cards_mycards_path
     else
       render :edit
     end
   end
 
   def destroy
-    @card=Card.find(params[:format])
+    @card=Card.find(params[:id])
     if @card.present?
       @card.destroy
       redirect_to cards_mycards_path
