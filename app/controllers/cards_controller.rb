@@ -4,6 +4,10 @@ def index
   @cards=current_user.cards
 end
 
+def show
+  @card=Card.find(params[:id])
+end
+
   def new
     @card=Card.new
   end
@@ -52,6 +56,6 @@ end
   end
 
   def card_params
-    params[:card].permit(:original_text, :translated_text, :review_date)
+    params[:card].permit(:original_text, :translated_text, :review_date, :image, :remove_image, :remote_image_url )
   end
 end
