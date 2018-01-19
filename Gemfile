@@ -24,6 +24,7 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 gem 'devise'
 gem 'omniauth-vkontakte'
+gem "figaro" #пременные среды
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://vkontakte.com/turbolinks/turbolinks

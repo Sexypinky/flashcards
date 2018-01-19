@@ -26,10 +26,10 @@
       <a class="navbar-brand" href="/">Flashcards's admin</a>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
-          <li><%= link_to "Все карточки", "/admin/cards"  %></li>
-          <li><%= link_to "Создать карточку", "/cards/new"  %></li>
-          <li><%= link_to "Мои карточки", "/cards"  %></li>
-          <li><%= link_to "Личный кабинет", "/cabinet"  %></li>
+          <li><%= link_to "Все карточки", admin_cards_path%></li>
+          <li><%= link_to "Создать карточку", new_card_path%></li>
+          <li><%= link_to "Мои карточки", cards_path%></li>
+          <li><%= link_to "Личный кабинет", cabinet_index_path%></li>
         </ul>
         <ul class="nav navbar-nav pull-right">
           <% if user_signed_in?%>
@@ -81,9 +81,9 @@
       <a class="navbar-brand" href="/welcome">Flashcards</a>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
-          <li><%= link_to "Создать карточку", "/cards/new"  %></li>
-          <li><%= link_to "Мои карточки", "/cards"  %></li>
-          <li><%= link_to "Личный кабинет", "/cabinet"  %></li>
+          <li><%= link_to "Создать карточку", new_card_path  %></li>
+          <li><%= link_to "Мои карточки", cards_path  %></li>
+          <li><%= link_to "Личный кабинет", cabinet_index_path  %></li>
         </ul>
         <ul class="nav navbar-nav pull-right">
           <% if user_signed_in?%>
