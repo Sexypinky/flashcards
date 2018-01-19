@@ -8,6 +8,10 @@
   <div class= "form_group">
     <%= f.text_field :translated_text%>
   </div>
+  <h5>Сменить колоду:</h5>
+  <div class= "form_group">
+    <%= f.collection_select(:deck, current_user.cards.select(:deck).distinct.each, :deck, :deck) %>
+  </div>
   <h5>Картинка</h5>
   <div class= "form_group">
     <%= f.file_field :image %>

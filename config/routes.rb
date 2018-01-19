@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'welcome', to: 'static_pages#index'
   post 'cards/cardcheck',to:'cards#cardcheck'
   post '/',to:'cards#cardcheck'
+  get 'cards/showdeck', to: 'cards#showdeck'
+  get 'cards/actualdeck', to:'cards#actualdeck'
   resources :cards
   resources :cabinet
 
