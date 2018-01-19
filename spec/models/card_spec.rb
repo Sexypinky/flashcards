@@ -26,6 +26,6 @@ describe Card do
     check=card.right_translation?('lol')
     expect(check).to_not be_truthy
   end
-  
+
 
 end
