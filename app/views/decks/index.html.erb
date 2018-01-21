@@ -11,7 +11,7 @@
       <% if current_user.actual_deck == deck.id %>
         <span class="badge badge-pill badge-success">Текущая</span>
       <%else%>
-        <span class="badge badge-inverse"><%= link_to 'Сделать текущей',decks_actualdeck_path(deck)%></span>
+        <span class="badge badge-inverse"><%= link_to 'Сделать текущей',decks_actualdeck_path(id: deck.id)%></span>
       <%end%>
       <span class="badge badge-default"><%=deck.cards.count%></span>
     </li>

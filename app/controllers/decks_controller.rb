@@ -46,7 +46,7 @@ class DecksController < ApplicationController
   end
 
   def actualdeck
-    current_user.update_attribute(:actual_deck, params[:format])
+    current_user.update_attribute(:actual_deck, params[:id])
     redirect_to decks_path, notice:'Текущая колода успешно изменена'
   end
 
