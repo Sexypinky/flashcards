@@ -9,11 +9,15 @@ def show
 end
 
   def new
+    if current_user.decks.blank?
+      redirect_to decks_path, notice:'Сначал создайте колоду'
+      else
     @card=Card.new
-  end
+    end
+    end
 
   def create
-    @card=current_user.decks.find(params[:deck]).cards.new(card_params)
+    @card=current_user.decks.find(params[:deck_id]).cards.new(card_params)
     if @card.save
       redirect_to decks_path, notice: 'Карточка успешно создана'
     else
@@ -39,7 +43,7 @@ end
     @card=Card.find(params[:id])
     if @card.present?
       @card.destroy
-      redirect_to cards_path(params[:format])
+      redirect_to decks_path(params[:format])
     else
       redirect_to edit_card_path(params[:id]),notice:'Ошибка удаления карточки'
     end
