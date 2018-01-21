@@ -10,7 +10,7 @@
   </div>
   <h5>Сменить колоду:</h5>
   <div class= "form_group">
-    <%= f.collection_select(:deck, current_user.cards.select(:deck).distinct.each, :deck, :deck) %>
+    <%= f.collection_select(:deck_id, current_user.decks, :id, :name) %>
   </div>
   <h5>Картинка</h5>
   <div class= "form_group">
@@ -18,6 +18,7 @@
     <h6>Удалить картинку?</h6>
     <%= f.check_box :remove_image %>
   </div>
+  <%= hidden_field_tag :format, params[:format]%>
   <div class= "form_group">
     <%= f.button :submit, 'Сохранить', class: 'btn btn-primary' %>
     <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>

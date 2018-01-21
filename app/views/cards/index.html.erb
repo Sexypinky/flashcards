@@ -1,17 +1,29 @@
-<h1>Мои колоды</h1>
-
-<% @card.select(:deck).distinct.each do |card|%>
-  <%if not card.deck.blank? %>
-    <ul class="list-group">
-      <li class="list-group-item">
-    <%= link_to card.deck, cards_showdeck_path(card.deck) %>
-        <% if current_user.actual_deck == card.deck %>
-          <span class="badge badge-pill badge-success">Текущая</span>
-          <%else%>
-          <span class="badge badge-inverse"><%= link_to 'Сделать текущей',cards_actualdeck_path(card.deck)%></span>
-          <%end%>
-        <span class="badge badge-default"><%=Card.where(deck: card.deck).count%></span>
-    </li>
-    </ul>
-    <%end%>
+<h1>Мои карты в колоде "<%=current_user.decks.find(params[:format]).name%>"</h1>
+<% current_user.decks.find(params[:format]).cards.each do |card|%>
+  <table class="table table-sm">
+    <thead>
+    <tr>
+      <th scope="col">Текст</th>
+      <th scope="col">Переведенный текст</th>
+      <th scope="col">Дата перепросмотра</th>
+      <th scope="col">Картинка</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%=link_to card.original_text, card%></td>
+      <td><%=card.translated_text%></td>
+      <td><%=card.review_date.strftime(("%d/%m/%Y"))%></td>
+      <%if card.image?%>
+        <td><%= image_tag card.image.url(:super_small), class:'image-index' if card.image? %></td>
+      <%else%>
+        <td>Отсутствует</td>
+      <%end%>
+    </tr>
+    </tbody>
+  </table>
+  <%= link_to 'Удалить карточку',card_path(card,params[:format]), method: :delete, class: 'btn btn-primary' %>
+  <%= link_to 'Редактировать',edit_card_path(card,params[:format]), class: 'btn btn-primary'%>
+  <br>
+  <br>
 <%end%>

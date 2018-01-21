@@ -8,13 +8,9 @@
   <div class= "form_group">
     <%= f.text_field :translated_text%>
   </div>
-  <h5>Создать новую колоду </h5>
-  <div class= "form_group">
-    <%= f.text_field :deck %>
-  </div>
   <h5>Добавить в существующую колоду:</h5>
   <div class= "form_group">
-    <%= collection_select(@deck2, :deck, current_user.cards.select(:deck).distinct.each, :deck, :deck) %>
+    <%= collection_select(@deck, :deck, current_user.decks, :id, :name) %>
   </div>
   <h5>Картинка</h5>
   <div class= "form_group">
