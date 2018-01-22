@@ -34,7 +34,6 @@ class DecksController < ApplicationController
 
   def destroy
     @deck=Deck.find(params[:id])
-    if @deck.present?
       if current_user.actual_deck == @deck.id
         current_user.update_attribute(:actual_deck, nil)
       end
@@ -43,7 +42,6 @@ class DecksController < ApplicationController
     else
       redirect_to edit_deck_path,notice:'Ошибка удаления карточки'
     end
-  end
 
   def actualdeck
     current_user.update_attribute(:actual_deck, params[:id])

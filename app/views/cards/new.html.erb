@@ -10,7 +10,7 @@
   </div>
   <h5>Добавить в существующую колоду:</h5>
   <div class= "form_group">
-    <%= collection_select(@deck, :deck_id, current_user.decks, :id, :name) %>
+    <%= f.collection_select(:deck_id, current_user.decks, :id, :name) %>
   </div>
   <h5>Картинка</h5>
   <div class= "form_group">

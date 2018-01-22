@@ -16,7 +16,7 @@ end
     end
 
   def create
-    @card=current_user.decks.find(params[:deck_id]).cards.new(card_params)
+    @card=current_user.cards.new(card_params)
     if @card.save
       redirect_to decks_path, notice: 'Карточка успешно создана'
     else
@@ -32,7 +32,7 @@ end
   def update
     @card=Card.find(params[:id])
     if @card.update(card_params)
-      redirect_to cards_path(params[:deck_id])
+      redirect_to cards_path(@card.deck_id)
     else
       render :edit
     end
@@ -40,13 +40,9 @@ end
 
   def destroy
     @card=Card.find(params[:id])
-    if @card.present?
       @card.destroy
-      redirect_to decks_path(@card.deck.id)
-    else
-      redirect_to edit_card_path(params[:id]),notice:'Ошибка удаления карточки'
+      redirect_to cards_path(@card.deck.id)
     end
-  end
 
   def cardcheck
     @card=Card.find(params[:id])
