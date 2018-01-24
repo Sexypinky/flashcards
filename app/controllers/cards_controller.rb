@@ -48,10 +48,17 @@ end
   def cardcheck
     @card=Card.find(params[:id])
     if @card.right_translation?(params[:check_text])
-      @card.update_review_date
+      @card.level_up
       redirect_to root_path, notice:'Слово переведено верно'
     else
+      unless @card.try==2
+        @card.tryplus
       redirect_to root_path, notice:'Слово переведено неверно'
+      else
+        redirect_to root_path, notice:'Кол-во попыток исчерпано, смена слова'
+      @card.level_down
+      @card.update(:try => 0)
+        end
     end
   end
 
