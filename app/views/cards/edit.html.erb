@@ -18,6 +18,10 @@
     <h6>Удалить картинку?</h6>
     <%= f.check_box :remove_image %>
   </div>
+  <h5>Дата перепросмотра</h5>
+  <div class= "form_group">
+    <%= f.text_field :review_date%>
+  </div>
   <div class= "form_group">
     <%= f.button :submit, 'Сохранить', class: 'btn btn-primary' %>
     <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>

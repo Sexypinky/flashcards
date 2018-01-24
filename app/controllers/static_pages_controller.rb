@@ -8,10 +8,13 @@ class StaticPagesController < ApplicationController
       redirect_to decks_path, notice:'Нет доступных карточек для просмотра'
     end
     end
-      if @card=current_user.decks.sample.nil?
+      if current_user.decks.sample.nil? or current_user.cards.sample.nil?
         redirect_to decks_path, notice:'Нет карточек для просмотра'
       else
         @card=current_user.decks.sample.cards.check_date.first
+        if @card.blank?
+          redirect_to decks_path, notice:'Нет доступных карточек для просмотра'
+        end
       end
   end
 
