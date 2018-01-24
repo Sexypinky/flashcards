@@ -39,8 +39,6 @@ class DecksController < ApplicationController
       end
       @deck.destroy
       redirect_to decks_path
-    else
-      redirect_to edit_deck_path,notice:'Ошибка удаления карточки'
     end
 
   def actualdeck
