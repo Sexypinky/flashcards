@@ -1,5 +1,5 @@
-<h1>Мои карты в колоде "<%=current_user.decks.find(params[:format]).name%>"</h1>
-<% current_user.decks.find(params[:format]).cards.each do |card|%>
+<h1>Мои карты в колоде "<%=@card.name%>"</h1>
+<% @card.cards.each do |card|%>
   <table class="table table-sm">
     <thead>
     <tr>

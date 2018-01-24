@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
 
 def index
+  @card=current_user.decks.find(params[:format])
 end
 
 def show
