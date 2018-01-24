@@ -9,14 +9,14 @@
     </thead>
     <tbody>
     <tr>
-      <td><%=link_to @card.original_text%></td>
+      <td><%=@card.original_text%></td>
       <td><%=@card.translated_text%></td>
       <td><%=@card.review_date.strftime(("%d/%m/%Y"))%></td>
       <%= image_tag @card.image.url(:small), class:'image-index' if @card.image? %>
     </tr>
     </tbody>
   </table>
-  <%= link_to 'Удалить карточку',card_path(params[:id]), method: :delete, class: 'btn btn-primary' %>
-  <%= link_to 'Редактировать',edit_card_path(params[:id]), class: 'btn btn-primary'%>
+  <%= link_to 'Удалить карточку',card_path, method: :delete, class: 'btn btn-primary' %>
+  <%= link_to 'Редактировать',edit_card_path, class: 'btn btn-primary'%>
   <br>
   <br>

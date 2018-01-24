@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
 
 def index
-  @cards=current_user.cards
+  @deck=current_user.decks.find(params[:format])
 end
 
 def show
@@ -9,13 +9,17 @@ def show
 end
 
   def new
+    if current_user.decks.blank?
+      redirect_to decks_path, notice:'Сначал создайте колоду'
+      else
     @card=Card.new
-  end
+    end
+    end
 
   def create
     @card=current_user.cards.new(card_params)
     if @card.save
-      redirect_to cards_path, notice: 'Карточка успешно создана'
+      redirect_to decks_path, notice: 'Карточка успешно создана'
     else
       flash.now[:danger]='Ошибка создания карточки'
       render :new
@@ -29,7 +33,7 @@ end
   def update
     @card=Card.find(params[:id])
     if @card.update(card_params)
-      redirect_to cards_path
+      redirect_to cards_path(@card.deck_id)
     else
       render :edit
     end
@@ -37,13 +41,9 @@ end
 
   def destroy
     @card=Card.find(params[:id])
-    if @card.present?
       @card.destroy
-      redirect_to cards_path
-    else
-      redirect_to cards_path,notice:'Ошибка удаления карточки'
+      redirect_to cards_path(@card.deck.id)
     end
-  end
 
   def cardcheck
     @card=Card.find(params[:id])
@@ -56,6 +56,6 @@ end
   end
 
   def card_params
-    params[:card].permit(:original_text, :translated_text, :review_date, :image, :remove_image, :remote_image_url )
+    params[:card].permit(:original_text, :translated_text, :review_date, :image, :remove_image, :remote_image_url, :deck_id)
   end
 end

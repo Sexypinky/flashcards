@@ -1,4 +1,5 @@
 <h2>Карточка</h2>
+<%= image_tag @card.image.url(:small), class:'image-index' if @card.image? %>
   <%= form_tag  url: cards_cardcheck_path, method: :post do  %>
     <h5>Текст</h5>
     <%= @card.translated_text%>
