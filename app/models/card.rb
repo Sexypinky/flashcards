@@ -18,11 +18,11 @@ class Card < ApplicationRecord
   end
 
   def tryplus
-    self.update(:try => self.try+1)
+    self.update(try: self.try+1)
   end
 
   def tryzero
-    self.update(:try => 0)
+    self.update(try: 0)
   end
 
   def level_up
@@ -38,11 +38,11 @@ class Card < ApplicationRecord
       when self.level == 4
        10.years.from_now
       end
-    self.update(:review_date => a, :level => self.level+1)
+    update(review_date: a, level: self.level+1)
   end
 
   def level_down
-    self.update(:review_date => 12.hours.from_now)
+    self.update(review_date: 12.hours.from_now)
   end
 
   before_create :set_review_date
