@@ -2,8 +2,7 @@ require File.dirname(__FILE__) + '/../rails_helper'
 
 describe Card do
 
-  let(:user) {create :user}
-  let(:card) {create (:card, user: user)}
+  let(:card) { create(:card) }
 
   it "is eq if set_review_date work" do
     expect(card.review_date).to eq(12.hours.from_now)

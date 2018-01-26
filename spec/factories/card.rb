@@ -2,10 +2,11 @@ FactoryBot.define do
 
   factory :deck do
     name "Английский"
+    user
   end
 
   factory :user do
-    email "anton@mail.ru"
+    sequence(:email) { |n| "person#{n}@example.com" }
     password "qwerty1234"
     password_confirmation "qwerty1234"
   end
@@ -13,9 +14,8 @@ FactoryBot.define do
   factory :card do
     original_text "apple"
     translated_text "яблоко"
-    deck
     user
+    deck
   end
-
 
 end
