@@ -57,7 +57,7 @@ end
       else
         redirect_to root_path, notice:'Кол-во попыток исчерпано, смена слова'
       @card.level_down
-      @card.update(:try => 0)
+      @card.tryzero
         end
     end
   end

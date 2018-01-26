@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  validates :email, :password, presence: true
   has_many :decks
   has_many :cards
   # Include default devise modules. Others available are:
