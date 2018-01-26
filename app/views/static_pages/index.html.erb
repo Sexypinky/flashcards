@@ -13,5 +13,9 @@
     </section>
 
   </section>
+  <% if not @new.blank? %>
+  Оригинал:<%= @card.original_text%><br>
+  Ваш вариант:<%=@new%>
+  <%end%>
 <%=render "showcards"%>
 </body>

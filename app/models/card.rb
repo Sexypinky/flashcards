@@ -15,7 +15,7 @@ class Card < ApplicationRecord
 
 
   def right_translation?(params)
-    self.original_text==(params)
+    self.original_text==(params) or Levenshtein.distance(params, self.original_text) == 1
   end
 
   def tryplus
@@ -27,7 +27,7 @@ class Card < ApplicationRecord
   end
 
   def level_up
-    a=case
+    review_date=case
         when self.level == 0
           3.days.from_now
         when self.level == 1
@@ -39,7 +39,7 @@ class Card < ApplicationRecord
         when self.level == 4
           10.years.from_now
       end
-    update(review_date: a, level: self.level+1)
+    update(review_date: review_date, level: self.level+1)
   end
 
   def level_down
