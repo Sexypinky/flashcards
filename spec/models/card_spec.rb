@@ -5,9 +5,9 @@ describe Card do
   let(:card) { create(:card) }
 
   it "is eq if set_review_date work" do
-    expect(card.review_date).to eq(12.hours.from_now)
-    end
-
+    expect(card.review_date.strftime('%m.%d.%Y')).to eq(12.hours.from_now.strftime('%m.%d.%Y'))
+  end
+  
   it "is true if right_translation? right" do
     check = card.right_translation?('Apple')
     expect(check).to be_truthy
@@ -25,12 +25,18 @@ describe Card do
 
   it "is eq if level_up.review_date is working" do
     card.level_up
-    expect(card.review_date).to eq(7.days.from_now)
+
+    expect(card.review_date.strftime('%m.%d.%Y')).to eq(3.days.from_now.strftime('%m.%d.%Y'))
   end
 
-  it "is eq if level_down is working" do
+  it "is eq if level_down.review_date is working" do
     card.level_down
-    expect(card.review_date).to eq(12.hours.from_now)
+    expect(card.review_date.strftime('%m.%d.%Y')).to eq(12.hours.from_now.strftime('%m.%d.%Y'))
+  end
+
+  it "is eq if level_down.level is working" do
+    card.level_down
+    expect(card.level).to eq(0)
   end
 
   it "is eq if tryplus is working" do
