@@ -4,7 +4,7 @@ describe Card do
 
   let(:card) { create(:card) }
 
-  it "is eq if set_review_date work" do
+  it "is eq if set_review_date working" do
     expect(card.review_date.strftime('%m.%d.%Y')).to eq(12.hours.from_now.strftime('%m.%d.%Y'))
   end
 
@@ -23,6 +23,7 @@ describe Card do
     expect(card.level).to eq(1)
   end
 
+
   it "is eq if level_up.review_date is working" do
     card.level_up
     expect(card.review_date.strftime('%m.%d.%Y')).to eq(3.days.from_now.strftime('%m.%d.%Y'))
@@ -32,6 +33,7 @@ describe Card do
     card.level_down
     expect(card.review_date.strftime('%m.%d.%Y')).to eq(12.hours.from_now.strftime('%m.%d.%Y'))
   end
+
 
   it "is eq if level_down.level is working" do
     card.level_down
@@ -47,6 +49,16 @@ describe Card do
     card.tryplus
     card.tryzero
     expect(card.try).to eq(0)
+  end
+
+  it "is true if card.misspelling? is working" do
+    check=card.misspelling?('Appleq')
+    expect(check).to be_truthy
+  end
+
+  it "is true if card.misspelling? is not working" do
+    check=card.misspelling?('Appleqqq')
+    expect(check).to be_falsey
   end
 
 end

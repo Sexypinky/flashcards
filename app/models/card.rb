@@ -13,9 +13,12 @@ class Card < ApplicationRecord
 
   scope :check_date, -> {where('review_date <= ?', Date.today)}
 
+  def misspelling?(params)
+  Levenshtein.distance(params, self.original_text) == 1
+  end
 
   def right_translation?(params)
-    self.original_text==(params) or Levenshtein.distance(params, self.original_text) == 1
+    self.original_text==params or self.misspelling?(params)
   end
 
   def tryplus

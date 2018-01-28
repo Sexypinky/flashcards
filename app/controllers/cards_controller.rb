@@ -49,10 +49,11 @@ end
     @card=Card.find(params[:id])
     if @card.right_translation?(params[:check_text])
       @card.level_up
-      if Levenshtein.distance(params[:check_text], @card.original_text) == 1
+      @card.tryzero
+      if @card.misspelling?(params[:check_text])
         @misspelling='Слово переведенно с опечаткой, оригинал: '+ @card.original_text + ', Ваш вариант: ' + params[:check_text]
         redirect_to root_path, notice: @misspelling
-      else
+      end
       redirect_to root_path, notice:'Слово переведено верно'
       end
     else
@@ -64,7 +65,6 @@ end
       @card.level_down
       @card.tryzero
         end
-    end
   end
 
   def card_params
