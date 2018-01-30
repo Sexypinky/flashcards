@@ -49,8 +49,7 @@ def cardcheck
   @card=Card.find(params[:id])
 
   if @card.right_translation?(params[:check_text])
-    @card.level_up && @card.tryzero
-
+    @card.succeed!
     notice = if @card.misspelling?(params[:check_text])
                'Слово переведенно с опечаткой, оригинал: '+ @card.original_text + ', Ваш вариант: ' + params[:check_text]
              else

@@ -13,6 +13,10 @@ class Card < ApplicationRecord
 
   scope :check_date, -> {where('review_date <= ?', Date.today)}
 
+  def succeed!
+  self.level_up && self.tryzero
+  end
+
   def failed!
     unless self.try==2
       self.tryplus
