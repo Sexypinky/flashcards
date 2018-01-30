@@ -3,7 +3,7 @@ class CardsMailer < ActionMailer::Base
   layout 'mailer'
 
   def freshcards
-    @user = params[:user]
+    @user = User.find(params[:user_id])
     mail(to: @user.email, subject: 'У вас появились новые карточки для просмотра')
   end
 
