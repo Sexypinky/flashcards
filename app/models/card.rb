@@ -13,9 +13,21 @@ class Card < ApplicationRecord
 
   scope :check_date, -> {where('review_date <= ?', Date.today)}
 
+  def failed!
+    unless self.try==2
+      self.tryplus
+    else
+      self.level_down
+      self.tryzero
+    end
+  end
+
+  def misspelling?(params)
+  Levenshtein.distance(params, self.original_text) == 1
+  end
 
   def right_translation?(params)
-    self.original_text==(params)
+    self.original_text==params or self.misspelling?(params)
   end
 
   def tryplus
@@ -27,7 +39,7 @@ class Card < ApplicationRecord
   end
 
   def level_up
-    a=case
+    review_date=case
         when self.level == 0
           3.days.from_now
         when self.level == 1
@@ -39,7 +51,7 @@ class Card < ApplicationRecord
         when self.level == 4
           10.years.from_now
       end
-    update(review_date: a, level: self.level+1)
+    update(review_date: review_date, level: self.level+1)
   end
 
   def level_down

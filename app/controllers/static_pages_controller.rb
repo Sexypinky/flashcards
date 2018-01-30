@@ -5,11 +5,11 @@ class StaticPagesController < ApplicationController
     if not current_user.actual_deck.nil?
     @card=current_user.actual_deck.cards.check_date.first
     if @card.blank?
-      redirect_to decks_path, notice:'Нет доступных карточек для просмотра'
+      redirect_to decks_path, notice:'Нет доступных карточек для просмотра в текущей колоде'
     end
     end
       if current_user.decks.sample.nil? or current_user.cards.sample.nil?
-        redirect_to decks_path, notice:'Нет карточек для просмотра'
+        redirect_to decks_path, notice:'Карточки отсутствуют'
       else
         @card=current_user.decks.sample.cards.check_date.first
         if @card.blank?

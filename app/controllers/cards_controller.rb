@@ -45,21 +45,21 @@ end
       redirect_to cards_path(@card.deck.id)
     end
 
-  def cardcheck
-    @card=Card.find(params[:id])
-    if @card.right_translation?(params[:check_text])
-      @card.level_up
-      redirect_to root_path, notice:'Слово переведено верно'
-    else
-      unless @card.try==2
-        @card.tryplus
-      redirect_to root_path, notice:'Слово переведено неверно'
-      else
-        redirect_to root_path, notice:'Кол-во попыток исчерпано, смена слова'
-      @card.level_down
-      @card.tryzero
-        end
-    end
+def cardcheck
+  @card=Card.find(params[:id])
+
+  if @card.right_translation?(params[:check_text])
+    @card.level_up && @card.tryzero
+
+    notice = if @card.misspelling?(params[:check_text])
+               'Слово переведенно с опечаткой, оригинал: '+ @card.original_text + ', Ваш вариант: ' + params[:check_text]
+             else
+               'Слово переведено верно'
+             end
+    redirect_to root_path, notice: notice
+  else
+    @card.failed!
+    redirect_to root_path, notice: 'Слово переведено неверно'
   end
 end
 

@@ -23,4 +23,8 @@ Things you may want to cover:
 
 * ...
 # flashcards
+Travis CI
 [![Build Status](https://api.travis-ci.org/Sexypinky/flashcards.png)](https://api.travis-ci.org/Sexypinky/flashcards.svg?branch=master)
+CodeClimate
+[![Maintainability](https://api.codeclimate.com/v1/badges/a72a4d46b3273899fd75/maintainability)](https://codeclimate.com/github/Sexypinky/flashcards/maintainability)
+
