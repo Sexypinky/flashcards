@@ -13,6 +13,15 @@ class Card < ApplicationRecord
 
   scope :check_date, -> {where('review_date <= ?', Date.today)}
 
+  def failed!
+    unless self.try==2
+      self.tryplus
+    else
+      self.level_down
+      self.tryzero
+    end
+  end
+
   def misspelling?(params)
   Levenshtein.distance(params, self.original_text) == 1
   end
