@@ -1,5 +1,5 @@
 <h2><%= t('forms.newdeck')%></h2>
-<%= simple_form_for (@deck) do |f| %>
+<%= simple_form_for (@deck) , url: dashboard_decks_path, :method => :post do |f| %>
   <h5><%=t('forms.deckname')%></h5>
   <div class= "form_group">
     <%= f.text_field :name  %>

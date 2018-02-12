@@ -1,5 +1,5 @@
 <h2>Редактирование карточки</h2>
-<%= simple_form_for (@card) do |f| %>
+<%= simple_form_for (@card) , url: dashboard_cards_path, :method => :post do |f| %>
   <h5><%=t('forms.text')%></h5>
   <div class= "form_group">
     <%= f.text_field :original_text  %>
