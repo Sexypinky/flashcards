@@ -30,10 +30,15 @@ gem "mini_magick"
 gem "fog-aws"
 gem 'levenshtein-ffi', :require => 'levenshtein' # детект опечаток
 gem 'whenever', require: false
+gem 'http_accept_language'# уставновка локали
+gem 'geocoder'# уставновка локали
+gem 'i18n_data' #+ locale
+gem 'repetition'# SM2
+gem 'interactor'# сервисный объект
+gem 'rollbar' # тест сервис
+gem 'newrelic_rpm'# newrelic мониор
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-# Turbolinks makes navigating your web application faster. Read more: https://vkontakte.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://vkontakte.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production

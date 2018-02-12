@@ -1,29 +1,29 @@
 <h2>Редактирование карточки</h2>
 <%= simple_form_for (@card) do |f| %>
-  <h5>Текст</h5>
+  <h5><%=t('forms.text')%></h5>
   <div class= "form_group">
     <%= f.text_field :original_text  %>
   </div>
-  <h5>Переведенный текст</h5>
+  <h5><%=t('forms.translatedtext')%></h5>
   <div class= "form_group">
     <%= f.text_field :translated_text%>
   </div>
-  <h5>Сменить колоду:</h5>
+  <h5><%=t('forms.changedeck')%>:</h5>
   <div class= "form_group">
     <%= f.collection_select(:deck_id, current_user.decks, :id, :name) %>
   </div>
-  <h5>Картинка</h5>
+  <h5><%=t('forms.picture')%></h5>
   <div class= "form_group">
     <%= f.file_field :image %>
-    <h6>Удалить картинку?</h6>
+    <h6><%=t('forms.destroyp')%></h6>
     <%= f.check_box :remove_image %>
   </div>
-  <h5>Дата перепросмотра</h5>
+  <h5><%=t('forms.nextrepetition')%></h5>
   <div class= "form_group">
-    <%= f.text_field :review_date%>
+    <%= f.text_field :next_repetition%>
   </div>
   <div class= "form_group">
-    <%= f.button :submit, 'Сохранить', class: 'btn btn-primary' %>
-    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+    <%= f.button :submit, t('forms.submit'), class: 'btn btn-primary' %>
+    <%= link_to t('forms.back'), :back, class: 'btn btn-outline-secondary'%>
   </div>
 <%end%>

@@ -1,25 +1,25 @@
-<h2>Создание карточки</h2>
+<h2><%=t('forms.newcard')%></h2>
 <%= simple_form_for (@card) do |f| %>
-  <h5>Текст</h5>
+  <h5><%=t('forms.text')%></h5>
   <div class= "form_group">
     <%= f.text_field :original_text  %>
   </div>
-  <h5>Переведенный текст</h5>
+  <h5><%=t('forms.translatedtext')%></h5>
   <div class= "form_group">
     <%= f.text_field :translated_text%>
   </div>
-  <h5>Добавить в существующую колоду:</h5>
+  <h5><%=t('forms.addindeck')%></h5>
   <div class= "form_group">
     <%= f.collection_select(:deck_id, current_user.decks, :id, :name) %>
   </div>
-  <h5>Картинка</h5>
+  <h5><%=t('forms.picture')%></h5>
   <div class= "form_group">
     <%= f.file_field :image %>
-    <h6>Ссылка на картинку:</h6>
+    <h6><%=t('forms.purl')%></h6>
     <%= f.text_field :remote_image_url %>
   </div>
   <div class= "form_group">
-    <%= f.button :submit, 'Сохранить', class: 'btn btn-primary' %>
-    <%= link_to 'Назад', :back, class: 'btn btn-outline-secondary'%>
+    <%= f.button :submit, t('forms.submit'), class: 'btn btn-primary' %>
+    <%= link_to t('forms.back'), :back, class: 'btn btn-outline-secondary'%>
   </div>
 <%end%>

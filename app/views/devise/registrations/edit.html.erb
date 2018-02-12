@@ -1,4 +1,4 @@
-<h2>Редактирование аккаунта <%= current_user.email%></h2>
+<h2><%= t('devise.forms.accedit')%> <%= current_user.email%></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   Email
@@ -6,18 +6,18 @@
     <%= f.text_field :email, required: true, autofocus: true %><br>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Ожидание подтверждения <%= resource.unconfirmed_email %></p>
+      <p><%= t('devise.forms.confirmawaiting')%> <%= resource.unconfirmed_email %></p>
     <% end %>
-    Введите новый пароль<br>
+    <%= t('devise.forms.password')%><br>
     <%= f.password_field :password, autocomplete: "off", required: false %><br>
-    Введите пароль еще раз<br>
+    <%= t('devise.forms.passconfirmation')%><br>
     <%= f.password_field :password_confirmation, required: false %><br>
-    Введите текущий пароль<br>
+    <%= t('devise.forms.currentpass')%><br>
     <%= f.password_field :current_password,  required: true %><br>
   </div>
   <br>
-  <%= f.button :submit, "Обновить параметры аккаунта", class: 'btn btn-info'%>
+  <%= f.button :submit, "#{t('devise.forms.refreshacc')}", class: 'btn btn-info'%>
 <% end %>
 
-<h3>Удаление аккаунта</h3>
-<%= link_to "Удалить аккаунт", registration_path(resource_name), class: 'btn btn-danger', data: { confirm: "Вы уверены?" }, method: :delete %></p>
+<h3><%= t('devise.forms.deleteacc')%></h3>
+<%= link_to "#{t('devise.forms.deleteacc')}", registration_path(resource_name), class: 'btn btn-danger', data: { confirm: "Вы уверены?" }, method: :delete %></p>

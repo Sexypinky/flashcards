@@ -1,0 +1,22 @@
+<h1><%= t('forms.card')%></h1>
+  <table class="table table-sm">
+    <thead>
+    <tr>
+      <th scope="col"><%=t('forms.text')%></th>
+      <th scope="col"><%=t('forms.translatedtext')%></th>
+      <th scope="col"><%=t('forms.nextrepetition')%></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%=@card.original_text%></td>
+      <td><%=@card.translated_text%></td>
+      <td><%=@card.next_repetition.strftime(("%d/%m/%Y"))%></td>
+      <%= image_tag @card.image.url(:small), class:'image-index' if @card.image? %>
+    </tr>
+    </tbody>
+  </table>
+  <%= link_to t('forms.destroycard'),dashboard_card_path, method: :delete, class: 'btn btn-primary' %>
+  <%= link_to t('forms.editcard'),edit_dashboard_card_path, class: 'btn btn-primary'%>
+  <br>
+  <br>

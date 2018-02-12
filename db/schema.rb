@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125063405) do
-
+ActiveRecord::Schema.define(version: 20180204132933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +24,12 @@ ActiveRecord::Schema.define(version: 20180125063405) do
     t.integer "deck_id"
     t.integer "level", default: 0
     t.integer "try", default: 0
+    t.decimal "easiness_factor", precision: 2, scale: 1, default: "2.5", null: false
+    t.integer "number_repetitions", default: 0, null: false
+    t.integer "quality_of_last_recall"
+    t.date "next_repetition"
+    t.integer "repetition_interval"
+    t.date "last_studied"
   end
 
   create_table "decks", force: :cascade do |t|

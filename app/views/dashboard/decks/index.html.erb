@@ -1,0 +1,22 @@
+<h1><%=t('forms.mydecks')%></h1>
+
+<%= link_to t('forms.newdeck'),new_dashboard_deck_path, class: 'btn btn-primary' %>
+<br>
+<br>
+
+<% @deck.each do |deck|%>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <%= link_to deck.name, dashboard_cards_path(deck) %>
+      <% if current_user.actual_deck == deck.id %>
+        <span class="badge badge-pill badge-success"><%=t('forms.currentdeck')%></span>
+      <%else%>
+        <span class="badge badge-inverse"><%= link_to t('forms.makecurrent'),dashboard_decks_actualdeck_path(id: deck.id)%></span>
+      <%end%>
+      <span class="badge badge-default"><%=deck.cards.count%></span>
+    </li>
+  </ul>
+  <%= link_to t('forms.destroydeck'),dashboard_deck_path(deck), method: :delete, class: 'btn btn-primary', data:{confirm:'Вы уверены? Все ваши карточки будут уничтожены.'}%>
+  <%= link_to t('forms.editdeck'),edit_dashboard_deck_path(deck), class: 'btn btn-primary'%>
+  <br><br>
+<%end%>

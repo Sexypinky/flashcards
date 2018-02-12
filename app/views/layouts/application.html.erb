@@ -7,12 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= content_for?(:title) ? yield(:title) : "Flashcards" %></title>
   <%= csrf_meta_tags %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script data-require="jquery@*" data-semver="3.3.1" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
   <%= stylesheet_link_tag "application", :media => "all" %>
-  <script data-require="jquery@*" data-semver="2.0.3" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+  <%= javascript_include_tag "application" %>
   <script data-require="bootstrap@3.1.1" data-semver="3.1.1" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
 </head>
 <body>
 <% if user_signed_in? and current_user.admin? %>
@@ -26,17 +26,17 @@
       <a class="navbar-brand" href="/">Flashcards's admin</a>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
-          <li><%= link_to "Все карточки", admin_cards_path%></li>
-          <li><%= link_to "Создать карточку", new_card_path%></li>
-          <li><%= link_to "Мои колоды", decks_path%></li>
-          <li><%= link_to "Личный кабинет", cabinet_index_path%></li>
+          <li><%= link_to t('layouts.allcards'), admin_cards_path%></li>
+          <li><%= link_to t('forms.newcard'), new_dashboard_card_path%></li>
+          <li><%= link_to t('forms.mydecks'), dashboard_decks_path%></li>
+          <li><%= link_to t('layouts.cabinet'), dashboard_cabinet_index_path%></li>
         </ul>
         <ul class="nav navbar-nav pull-right">
           <% if user_signed_in?%>
-            <li> <%= link_to 'Выход', :destroy_user_session, method: :delete%></li>
+            <li> <%= link_to t('layouts.signout'), :destroy_user_session, method: :delete%></li>
           <%else%>
-            <li> <%= link_to 'Вход', :new_user_session%></li>
-            <li>  <%= link_to 'Регистрация', :new_user_registration%></li>
+            <li> <%= link_to t('layouts.signin'), :new_user_session%></li>
+            <li>  <%= link_to t('layouts.register'), :new_user_registration%></li>
           <%end%>
         </ul>
       </div>
@@ -62,7 +62,7 @@
       </div>
     </div>
     <footer>
-      <p>&copy; Flashcards 2018</p>
+      <p>&copy; <%=t('layouts.logo')%> 2018</p>
     </footer>
 
   </div> <!-- /container -->
@@ -78,19 +78,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/welcome">Flashcards</a>
+      <a class="navbar-brand" href="/welcome"><%=t('layouts.logo')%></a>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
-          <li><%= link_to "Создать карточку", new_card_path  %></li>
-          <li><%= link_to "Мои колоды", decks_path %></li>
-          <li><%= link_to "Личный кабинет", cabinet_index_path  %></li>
+          <li><%= link_to t('forms.newcard'), new_dashboard_card_path%></li>
+          <li><%= link_to t('forms.mydecks'), dashboard_decks_path%></li>
+          <li><%= link_to t('layouts.cabinet'),dashboard_cabinet_index_path%></li>
         </ul>
         <ul class="nav navbar-nav pull-right">
           <% if user_signed_in?%>
-            <li> <%= link_to 'Выход', :destroy_user_session, method: :delete%></li>
+            <li> <%= link_to t('layouts.signout'), :destroy_user_session, method: :delete%></li>
+            <li> <%= link_to 'EN', change_locale_path(id: 'en')%></li>
+            <li> <%= link_to 'RU',change_locale_path(id: 'ru')%></li>
           <%else%>
-            <li> <%= link_to 'Вход', :new_user_session%></li>
-            <li>  <%= link_to 'Регистрация', :new_user_registration%></li>
+            <li> <%= link_to t('layouts.signin'), :new_user_session%></li>
+            <li>  <%= link_to t('layouts.register'), :new_user_registration%></li>
           <%end%>
         </ul>
       </div>
@@ -108,7 +110,7 @@
           <h3>Sidebar</h3>
           <ul class="nav nav-list">
             <li class="nav-header">Sidebar</li>
-            <li><%= link_to "Link1", "/path1"  %></li>
+            <li><%= I18n.locale%></li>
             <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
           </ul>
@@ -117,7 +119,7 @@
     </div><!--/row-->
 
     <footer>
-      <p>&copy; Flashcards 2018</p>
+      <p>&copy; <%=t('layouts.logo')%> 2018</p>
     </footer>
 
   </div> <!-- /container -->

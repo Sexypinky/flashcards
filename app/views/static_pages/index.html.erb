@@ -1,21 +1,18 @@
 <head>
-  <title>Флэшкарточкер</title>
+  <title><%=t('layouts.logo')%></title>
   <link rel="stylesheet" href="../../assets/stylesheets/application.css">
 </head>
-
+<div id="flash"></div>
 <body>
   <section id="container">
-
     <section>
       <p style="font-size: 22px;">
-        Первый в мире удобный менеджер флеш-карточек. Именно так.
+        <%=t('layouts.slogan')%>
       </p>
     </section>
-
+    
   </section>
-  <% if not @new.blank? %>
-  Оригинал:<%= @card.original_text%><br>
-  Ваш вариант:<%=@new%>
-  <%end%>
+
 <%=render "showcards"%>
+
 </body>

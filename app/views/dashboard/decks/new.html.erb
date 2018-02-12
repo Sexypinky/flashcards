@@ -1,0 +1,11 @@
+<h2><%= t('forms.newdeck')%></h2>
+<%= simple_form_for (@deck) do |f| %>
+  <h5><%=t('forms.deckname')%></h5>
+  <div class= "form_group">
+    <%= f.text_field :name  %>
+  </div>
+  <div class= "form_group">
+    <%= f.button :submit, t('forms.submit'), class: 'btn btn-primary' %>
+    <%= link_to t('forms.back'), :back, class: 'btn btn-outline-secondary'%>
+  </div>
+<%end%>

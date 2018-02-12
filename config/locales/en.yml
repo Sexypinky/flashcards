@@ -30,4 +30,66 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  forms:
+    text: 'Text'
+    translatedtext: 'Translated text'
+    changedeck: 'Change deck'
+    picture: 'Picture'
+    destroyp: 'Destroy picture?'
+    nextrepetition: 'Next repetition'
+    back: 'Back'
+    addindeck: 'Add in deck'
+    purl: 'Picture URL'
+    newcard: 'New card'
+    editcard: 'Edit card'
+    card: 'Card'
+    submit: 'Submit'
+    destroycard: 'Destroy card'
+    deckname: 'Deck name'
+    newdeck: 'New deck'
+    mydecks: 'My decks'
+    currentdeck: 'Current deck'
+    makecurrent: 'Make current'
+    destroydeck: 'Destroy deck'
+    editdeck: 'Edit deck'
+    mycardsindeck: 'My cards in deck'
+    absent: 'Absent'
+
+  layouts:
+    cabinet: 'Cabinet'
+    cabinetof: 'Cabinet of'
+    editacc: 'Edit account'
+    allcards: 'All cards'
+    signin: 'Sign in'
+    signout: 'Sign out'
+    register: 'Registration'
+    slogan: 'The world first handy flash card manager. Exactly.'
+    logo: 'Flashcards'
+
+  flash:
+    firstlymakedeck: 'Firstly make a deck'
+    succeedmakecard: 'You are succeed make a card'
+    failmakecard: 'Error of creating the card'
+    wrongtranslate: 'The word is translated incorrectly'
+    righttranslate: 'The word is translated correctly'
+    misspelling: 'The word is translated with a misspelling'
+    yourvariant: 'Your variant'
+    righttrasnlation: 'right translation'
+    succeedmakedeck: 'You are succeed make a deck'
+    failmakedeck: 'Error of creating a deck'
+    changecurrentdeck: 'Curent deck was succsesfully changed'
+    nocardsincurrentdeck: 'There are no cards available for viewing in the current deck'
+    nocards: 'There are no cards'
+    nopendingcards: 'No cards are available for viewing'
+
+
+
+
+
+
+
+
+
+
+
+

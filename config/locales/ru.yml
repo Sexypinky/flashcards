@@ -1,0 +1,90 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+ru:
+  forms:
+    text: 'Текст'
+    translatedtext: 'Переведенный текст'
+    changedeck: 'Сменить колоду'
+    picture: 'Картинка'
+    destruyp: 'Удалить картинку?'
+    nextrepetition: 'Дата перепросмотра'
+    back: 'Назад'
+    addindeck: 'Добавить в сущетсвующую колоду'
+    purl: 'Ссылка на картинку'
+    newcard: 'Добавить карточку'
+    editcard: 'Редактировать карточку'
+    card: 'Карточка'
+    submit: 'Подтвердить'
+    destroycard: 'Удалить карточку'
+    deckname: 'Название колоды'
+    newdeck: 'Новая колода'
+    mydecks: 'Мои колоды'
+    currentdeck: 'Текущая колода'
+    makecurrent: 'Сделать текущей'
+    destroydeck: 'Удалить колоду'
+    editdeck: 'Редактировать колоду'
+    mycardsindeck: 'Мои карточки в колоде'
+    absent: 'Отсутствует'
+  layouts:
+    cabinet: 'Личный кабинет'
+    cabinetof: 'Личный кабинет пользователя'
+    editacc: 'Редактировать аккаунт'
+    allcards: 'Все карточки'
+    signin: 'Войти'
+    signout: 'Выйти'
+    register: 'Регистрация'
+    slogan: 'Первый в мире удобный менеджер флеш-карточек. Именно так.'
+    logo: 'Флэшкарточкер'
+  flash:
+      firstlymakedeck: 'Сначала создайте колоду'
+      succeedmakecard: 'Вы успешно создали карточку'
+      failmakecard: 'Ошибка создания карточки'
+      wrongtranslate: 'Слово переведено неверно'
+      righttranslate: 'Слово переведено верно'
+      misspelling: 'Слово переведено верно, но с опечаткой'
+      yourvariant: 'Ваш вариант'
+      righttrasnlation: 'Правильный перевод'
+      succeedmakedeck: 'Вы успешно создали колоду'
+      failmakedeck: 'Ошибка создания колоды'
+      changecurrentdeck: 'Текущая колода успешно изменена'
+      nocardsincurrentdeck: 'В текущей колоде отсутствуют карточки для просмотра'
+      nocards: 'Карточки отсутствуют'
+      nopendingcards: 'Карточки ожидающие перепросмотра отсутствуют'
+
+
+
+
+
+
+
+
+

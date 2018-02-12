@@ -1,0 +1,29 @@
+<h1><%=t('forms.mycardsindeck')%> "<%=@deck.name%>"</h1>
+<% @deck.cards.each do |card|%>
+  <table class="table table-sm">
+    <thead>
+    <tr>
+      <th scope="col"><%=t('forms.text')%></th>
+      <th scope="col"><%=t('forms.translatedtext')%></th>
+      <th scope="col"><%=t('forms.nextrepetition')%></th>
+      <th scope="col"><%=t('forms.picture')%></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%=link_to card.original_text, card%></td>
+      <td><%=card.translated_text%></td>
+      <td><%=card.next_repetition.strftime(("%d/%m/%Y"))%></td>
+      <%if card.image?%>
+        <td><%= image_tag card.image.url(:super_small), class:'image-index' if card.image? %></td>
+      <%else%>
+        <td><%=t('forms.absent')%></td>
+      <%end%>
+    </tr>
+    </tbody>
+  </table>
+  <%= link_to t('forms.destroycard'),dashboard_card_path(card), method: :delete, class: 'btn btn-primary' %>
+  <%= link_to t('forms.editcard'),edit_dashboard_card_path(card), class: 'btn btn-primary'%>
+  <br>
+  <br>
+<%end%>

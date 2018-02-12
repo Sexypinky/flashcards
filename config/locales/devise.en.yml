@@ -2,6 +2,23 @@
 
 en:
   devise:
+    forms:
+      login: "Log in"
+      password: "Password"
+      rememberme: "Remember me"
+      signup: "Sign up"
+      signinwith: "Sign in with"
+      passconfirmation: "Password confirmation"
+      mincharacters: "minimum character"
+      forgotpass?: "Forgot password?"
+      didinstruction?: "Didn't received instructions?"
+      didunblockinstruction?: "Didn't received unblock instructions?"
+      accedit: "Account edit"
+      confirmawaiting: "Confirmation awaiting"
+      refreshacc: "Update account parameters"
+      deleteacc: "Delete account"
+      currentpass: "Current password"
+
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."

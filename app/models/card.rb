@@ -1,4 +1,5 @@
 class Card < ApplicationRecord
+  include Repetition
   mount_uploader :image, ImageUploader
   belongs_to :deck
   belongs_to :user
@@ -11,17 +12,29 @@ class Card < ApplicationRecord
     self.translated_text=translated_text.capitalize
   end
 
-  scope :check_date, -> {where('review_date <= ?', Date.today)}
+  scope :check_date, -> {where('next_repetition <= ?', Date.today)}
 
-  def succeed!
-  self.level_up && self.tryzero
+  def succeed!(params)
+    if params>10
+      self.set_next_repetition_date
+    else
+    mark = case params
+      when 1..5
+        5
+      when 5..10
+       4
+           end
+    end
+    self.process_recall_result(mark)
+    self.save
   end
 
   def failed!
     unless self.try==2
       self.tryplus
     else
-      self.level_down
+      self.set_next_repetition_date
+      self.save
       self.tryzero
     end
   end
@@ -42,30 +55,10 @@ class Card < ApplicationRecord
     self.update(try: 0)
   end
 
-  def level_up
-    review_date=case
-        when self.level == 0
-          3.days.from_now
-        when self.level == 1
-          7.days.from_now
-        when self.level == 2
-          14.days.from_now
-        when self.level == 3
-          1.month.from_now
-        when self.level == 4
-          10.years.from_now
-      end
-    update(review_date: review_date, level: self.level+1)
-  end
+  before_create :set_next_repetition_date
 
-  def level_down
-    self.update(review_date: 12.hours.from_now, level: 0)
-  end
-
-  before_create :set_review_date
-
-  def set_review_date
-    self.review_date=12.hours.from_now
+  def set_next_repetition_date
+    self.next_repetition=12.hours.from_now
   end
 
 end

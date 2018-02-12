@@ -1,14 +1,16 @@
-<h2>Log in</h2>
+<h2><%=t('devise.forms.login')%></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
     <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <b><%=t('devise.forms.password')%></b>
+    <%= f.password_field :password, required: false %><br>
+    <b><%=t('devise.forms.rememberme')%></b>
+    <%= f.check_box :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+    <%= f.button :submit, "#{t('devise.forms.login')}" %>
   </div>
 <% end %>
 

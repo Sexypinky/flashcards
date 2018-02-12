@@ -102,11 +102,15 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.2.5)
+    geocoder (1.4.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.5.7)
+    http_accept_language (2.1.1)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
+    i18n_data (0.8.0)
+    interactor (3.1.0)
     ipaddress (0.8.3)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -142,6 +146,7 @@ GEM
     multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    newrelic_rpm (4.8.0.341)
     nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
@@ -194,9 +199,12 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     ref (2.0.0)
+    repetition (1.0.2)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    rollbar (2.15.5)
+      multi_json
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -290,15 +298,22 @@ DEPENDENCIES
   factory_bot
   figaro
   fog-aws
+  geocoder
+  http_accept_language
+  i18n_data
+  interactor
   jbuilder (~> 2.5)
   less-rails
   levenshtein-ffi
   listen (>= 3.0.5, < 3.2)
   mini_magick
+  newrelic_rpm
   omniauth-vkontakte
   pg
   puma (~> 3.7)
   rails (~> 5.1.4)
+  repetition
+  rollbar
   rspec-rails (~> 3.7)
   sass-rails (~> 5.0)
   selenium-webdriver

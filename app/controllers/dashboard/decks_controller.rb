@@ -1,4 +1,4 @@
-class DecksController < ApplicationController
+class Dashboard::DecksController <  Dashboard::DashboardController
 
   def index
     @deck=current_user.decks
@@ -11,9 +11,9 @@ class DecksController < ApplicationController
   def create
     @deck=current_user.decks.new(deck_params)
     if @deck.save
-      redirect_to decks_path, notice: 'Колода успешно создана'
+      redirect_to dashboard_decks_path, notice: t('flash.succeedmakedeck')
     else
-      flash.now[:danger]='Ошибка создания колоды'
+      flash.now[:danger]=t('flash.failmakedeck')
       render :new
     end
   end
@@ -25,7 +25,7 @@ class DecksController < ApplicationController
   def update
     @deck=Deck.find(params[:id])
     if @deck.update(deck_params)
-      redirect_to decks_path
+      redirect_to dashboard_decks_path
     else
       render :edit
     end
@@ -37,13 +37,14 @@ class DecksController < ApplicationController
       if current_user.actual_deck == @deck.id
         current_user.update_attribute(:actual_deck, nil)
       end
+      @deck.cards.destroy
       @deck.destroy
-      redirect_to decks_path
+      redirect_to dashboard_decks_path
     end
 
   def actualdeck
     current_user.update_attribute(:actual_deck, params[:id])
-    redirect_to decks_path, notice:'Текущая колода успешно изменена'
+    redirect_to dashboard_decks_path, notice:t('flash.changecurrentdeck')
   end
 
   def deck_params
