@@ -33,7 +33,7 @@ end
   def update
     @card=Card.find(params[:id])
     if @card.update(card_params)
-      redirect_to cards_path(@card.deck_id)
+      redirect_to dashboard_cards_path(@card.deck_id)
     else
       render :edit
     end
@@ -42,7 +42,7 @@ end
   def destroy
     @card=Card.find(params[:id])
       @card.destroy
-      redirect_to cards_path(@card.deck.id)
+      redirect_to dashboard_cards_path(@card.deck.id)
     end
 
 def cardcheck

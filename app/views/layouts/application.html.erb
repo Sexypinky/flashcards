@@ -88,8 +88,6 @@
         <ul class="nav navbar-nav pull-right">
           <% if user_signed_in?%>
             <li> <%= link_to t('layouts.signout'), :destroy_user_session, method: :delete%></li>
-            <li> <%= link_to 'EN', change_locale_path(id: 'en')%></li>
-            <li> <%= link_to 'RU',change_locale_path(id: 'ru')%></li>
           <%else%>
             <li> <%= link_to t('layouts.signin'), :new_user_session%></li>
             <li>  <%= link_to t('layouts.register'), :new_user_registration%></li>

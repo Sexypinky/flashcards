@@ -11,7 +11,7 @@
     </thead>
     <tbody>
     <tr>
-      <td><%=link_to card.original_text, card%></td>
+      <td><%=link_to card.original_text, dashboard_cards_show_path(id: card)%></td>
       <td><%=card.translated_text%></td>
       <td><%=card.next_repetition.strftime(("%d/%m/%Y"))%></td>
       <%if card.image?%>

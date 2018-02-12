@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :dashboard do
     post 'cards/cardcheck',to:'cards#cardcheck'
     get 'decks/actualdeck', to: 'decks#actualdeck'
+    get 'cards/show', to: 'cards#show'
     resources :cards
     resources :cabinet
     resources :decks

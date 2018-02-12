@@ -58,7 +58,7 @@ class Card < ApplicationRecord
   before_create :set_next_repetition_date
 
   def set_next_repetition_date
-    self.next_repetition=12.hours.from_now
+    self.next_repetition=1.days.from_now
   end
 
 end
