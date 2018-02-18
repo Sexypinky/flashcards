@@ -11,4 +11,4 @@ class ApplicationController < ActionController::Base
     I18n.locale = I18nData.country_code(request.location.try(:country)).try(:downcase) if request.location.present?
   end
 
-  end
+end

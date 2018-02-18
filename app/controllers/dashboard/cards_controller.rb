@@ -1,20 +1,20 @@
 class Dashboard::CardsController <  Dashboard::DashboardController
 
-def index
-  @deck=current_user.decks.find(params[:format])
-end
+  def index
+    @deck=current_user.decks.find(params[:format])
+  end
 
-def show
-  @card=Card.find(params[:id])
-end
+  def show
+    @card=Card.find(params[:id])
+  end
 
   def new
     if current_user.decks.blank?
       redirect_to dashboard_decks_path, notice: t('flash.firstlymakedeck')
-      else
-    @card=Card.new
+    else
+      @card=Card.new
     end
-    end
+  end
 
   def create
     @card=current_user.cards.new(card_params)
@@ -41,9 +41,9 @@ end
 
   def destroy
     @card=Card.find(params[:id])
-      @card.destroy
-      redirect_to dashboard_cards_path(@card.deck.id)
-    end
+    @card.destroy
+    redirect_to dashboard_cards_path(@card.deck.id)
+  end
 
 def cardcheck
   @card=Card.find(params[:id])
@@ -51,7 +51,7 @@ def cardcheck
     @card.succeed!(params[:time].to_i)
     @notice = if @card.misspelling?(params[:check_text])
                t('flash.wrongtranslate')+': '+ t('flash.righttrasnlation')+' - ' + @card.original_text+', ' + t('flash.yourvariant')+' - ' + params[:check_text]
-             else
+              else
                t('flash.righttranslate')
               end
     respond_to do |format|

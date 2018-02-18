@@ -40,7 +40,7 @@ class Dashboard::DecksController <  Dashboard::DashboardController
       @deck.cards.destroy
       @deck.destroy
       redirect_to dashboard_decks_path
-    end
+  end
 
   def actualdeck
     current_user.update_attribute(:actual_deck, params[:id])

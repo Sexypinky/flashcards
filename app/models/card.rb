@@ -22,7 +22,7 @@ class Card < ApplicationRecord
       when 1..5
         5
       when 5..10
-       4
+        4
            end
     end
     self.process_recall_result(mark)
@@ -40,7 +40,7 @@ class Card < ApplicationRecord
   end
 
   def misspelling?(params)
-  Levenshtein.distance(params, self.original_text) == 1
+    Levenshtein.distance(params, self.original_text) == 1
   end
 
   def right_translation?(params)
