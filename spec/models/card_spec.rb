@@ -4,8 +4,8 @@ describe Card do
 
   let(:card) { create(:card) }
 
-  it "is eq if set_review_date working" do
-    expect(card.review_date.strftime('%m.%d.%Y')).to eq(12.hours.from_now.strftime('%m.%d.%Y'))
+  it "is eq if set_next_repetition_date working" do
+    expect(card.next_repetition.strftime('%m.%d.%Y')).to eq(1.day.from_now.strftime('%m.%d.%Y'))
   end
   
   it "is true if right_translation? right" do
@@ -16,29 +16,6 @@ describe Card do
   it "is true if right_translation? not right" do
     check=card.right_translation?('lol')
     expect(check).to_not be_truthy
-  end
-
-  it "is eq if level_up.level is working" do
-    card.level_up
-    expect(card.level).to eq(1)
-  end
-
-
-  it "is eq if level_up.review_date is working" do
-    card.level_up
-
-    expect(card.review_date.strftime('%m.%d.%Y')).to eq(3.days.from_now.strftime('%m.%d.%Y'))
-  end
-
-  it "is eq if level_down.review_date is working" do
-    card.level_down
-    expect(card.review_date.strftime('%m.%d.%Y')).to eq(12.hours.from_now.strftime('%m.%d.%Y'))
-  end
-
-
-  it "is eq if level_down.level is working" do
-    card.level_down
-    expect(card.level).to eq(0)
   end
 
   it "is eq if tryplus is working" do
@@ -61,5 +38,18 @@ describe Card do
     check=card.misspelling?('Appleqqq')
     expect(check).to be_falsey
   end
+
+  it "is eq if succeed! is working" do
+    check=card.succeed! (4)
+    expect(check).to eq(5)
+  end
+
+  it "is eq if failed! is working" do
+    card.update(try: 3)
+    card.failed!
+    expect(card.next_repetition.strftime('%m.%d.%Y')).to eq(1.day.from_now.strftime('%m.%d.%Y'))
+  end
+
+
 
 end
