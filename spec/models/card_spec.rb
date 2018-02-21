@@ -40,8 +40,8 @@ describe Card do
   end
 
   it "is eq if succeed! is working" do
-    check=card.succeed!(4)
-    expect(check).to eq(5)
+    card.succeed!(4)
+    expect(card.next_repetition.strftime('%m.%d.%Y')).to eq(1.day.from_now.strftime('%m.%d.%Y'))
   end
 
   it "is eq if failed! is working" do
