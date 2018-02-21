@@ -1,4 +1,4 @@
-require 'rails_helper'h
+require 'rails_helper'
 
 describe Card do
 
