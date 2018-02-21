@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../rails_helper'
+require 'rails_helper'h
 
 describe Card do
 
@@ -40,7 +40,7 @@ describe Card do
   end
 
   it "is eq if succeed! is working" do
-    check=card.succeed! (4)
+    check=card.succeed!(4)
     expect(check).to eq(5)
   end
 
