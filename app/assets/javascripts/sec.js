@@ -1,12 +1,13 @@
 $(document).ready(function () {
 var sum = 0;
 function mode() {
-    if ($('#time').val() == 'stop') {
-        sum=0;
+    if ($('#point').val() == 'stop') {
+        sum = 0;
+        $('#point').val('0');
     } else {
-        $('#time').val(sum = sum + 1);
+        $('#time').val(sum++);
     }
-};
+}
 setInterval(mode, 1000);
 
 });

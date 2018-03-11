@@ -7,7 +7,7 @@ $(document).ready(function(){
             success: function(notice) {
                 $("#flash").html('<div class="alert alert-info">'+notice+'</div>');
                 $("#myForm").load(location.href + " #myForm");
-                $("#time").val('stop');
+                $("#point").val('stop');
             }
         });
         return false;

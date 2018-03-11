@@ -24,8 +24,8 @@ class Card < ApplicationRecord
       when 5..10
         4
            end
-    end
     self.process_recall_result(mark)
+    end
     self.save
   end
 

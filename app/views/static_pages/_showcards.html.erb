@@ -1,3 +1,4 @@
+<div id="point" value=""></div>
 <form id="myForm">
   <h2><%=t('forms.card')%></h2>
   <%= image_tag @card.image.url(:small), class:'image-index' if @card.image? %>
@@ -6,7 +7,7 @@
   <h5><%=t('forms.translatedtext')%></h5>
   <input id="time" type="hidden" value="">
   <input id="id" type="hidden" value="<%= @card.id%>">
-  <input id="check_text" type="text" size="20"> <br/>
+  <input id="check_text" value="<%= @card.original_text%>" type="text" size="20"> <br/>
   <input type="submit" value="Отправить">
 </form>
 
