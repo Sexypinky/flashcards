@@ -70,9 +70,11 @@
       <a class="navbar-brand" href="/welcome"><%=t('layouts.logo')%></a>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
-          <li><%= link_to t('forms.newcard'), new_dashboard_card_path%></li>
-          <li><%= link_to t('forms.mydecks'), dashboard_decks_path%></li>
-          <li><%= link_to t('layouts.cabinet'),dashboard_cabinet_index_path%></li>
+          <% if user_signed_in? %>
+            <li><%= link_to t('forms.newcard'), new_dashboard_card_path%></li>
+            <li><%= link_to t('forms.mydecks'), dashboard_decks_path%></li>
+            <li><%= link_to t('layouts.cabinet'),dashboard_cabinet_index_path%></li>
+          <%end%>
         </ul>
         <ul class="nav navbar-nav pull-right">
           <% if user_signed_in?%>
